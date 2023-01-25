@@ -14,3 +14,10 @@ after_success:
   - docker build -t carlos116/nginx-stable ./nginx
   - docker build -t carlos116/server-stable ./server
   - docker build -t carlos116/worker-stable ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push carlos116/react-stable
+  - docker push carlos116/nginx-stable
+  - docker push carlos116/server-stable
+  - docker push carlos116/worker-stable
